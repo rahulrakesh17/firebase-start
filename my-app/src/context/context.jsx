@@ -37,66 +37,22 @@ const ContextProvider =({children})=>{
             })
             
             function addData(e){
-                e.preventDefault()
-                let title = document.getElementById("title").value;
-                let author = document.getElementById("author").value;
+                e.preventDefault();
+                console.log(123)
+                let title = document.querySelector("#title").value
+                let author = document.querySelector("#author").value
                 console.log(title,author)
                 addDoc(colRef,{
                     title,
-                    author,
+                    author
                 })
-                .then(()=>{
-                    document.querySelector(".add").reset();
-                })
+                document.querySelector(".add").reset()
             }
-
-            let itemId;
-            function deleteData(e){
-                e.preventDefault()
-
-                let name = document.getElementById("itemId").value;
-                
-                
-
-                
-
-                console.log(getDocs(colRef))
-                getDocs(colRef)
-                .then((snapshot)=>{
-                    console.log("hi")
-                    for(let i=0;i<snapshot.docs.length;i++){
-                            let objValue={...snapshot.docs[i].data(),id:snapshot.docs[i].id}
-                            console.log(objValue)
-                            if(objValue.title===name){
-                               itemId=objValue.id
-                               console.log(itemId)
-                            }
-                    }
-                   
-                    
-                })
-
-                
-                
-            }
-            
-           function deleteBook(){
-            deleteData();
-            const docRef= doc(db,"books",itemId)
-                deleteDoc(docRef)
-                .then(()=>{
-                    document.querySelector(".delete").reset()
-                })
-                .catch(err=>{
-                    console.log(err)
-                })
-           }
 
     return(
         <contextApi.Provider value={{
             addData,
-            deleteBook,
-            deleteData
+            
         }}>{children}</contextApi.Provider>
     )
     }

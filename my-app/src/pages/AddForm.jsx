@@ -22,7 +22,7 @@ import { contextApi} from '../context/context'
         <form className='delete'>
             <label htmlFor="delete">Id:</label>
             <input htmlFor="delete" id='itemId'></input>
-            <button className='deleteBtn' onClick={useContextApi.deletedata}>Delete this book</button>
+            <button className='deleteBtn' onClick={useContextApi.deleteBook}>Delete this book</button>
         </form>
       </>
     )
