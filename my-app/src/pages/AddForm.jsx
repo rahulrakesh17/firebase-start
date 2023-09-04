@@ -1,12 +1,12 @@
 import React from 'react'
 import { useContext } from 'react';
-
+import {addDoc} from "firebase/firestore"
 import { contextApi} from '../context/context'
 
 
   
   function AddForm() {
-    console.log("hello")
+    
     const useContextApi = useContext(contextApi)
     return (
       <>
@@ -21,8 +21,8 @@ import { contextApi} from '../context/context'
         <h2>To delete enter the id </h2>
         <form className='delete'>
             <label htmlFor="delete">Id:</label>
-            <input htmlFor="delete" id='itemId'></input>
-            <button className='deleteBtn' onClick={useContextApi.deleteBook}>Delete this book</button>
+            <input htmlFor="delete" id='itemId'/>
+            <button className='deleteBtn' onClick={useContextApi.deleteData}>Delete this book</button>
         </form>
       </>
     )
